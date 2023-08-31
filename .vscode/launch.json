@@ -5,7 +5,7 @@
    "version": "0.2.0",
    "configurations": [
         {
-            "name": ".NET Core Launch (web)",
+            "name": "Web",
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build",
@@ -20,10 +20,32 @@
                 "pattern": "^\\s*Now listening on:\\s+(https?://\\S+)"
             },
             "env": {
-                "ASPNETCORE_ENVIRONMENT": "Development"
+                "ASPNETCORE_ENVIRONMENT": "Development",
+                "CORECLR_ENABLE_PROFILING": "1",
+                "CORECLR_PROFILER": "{846F5F1C-F9AE-4B07-969E-05C26BC060D8}",
+                "DD_DOTNET_TRACER_HOME": "${workspaceFolder}/src/Web/bin/Debug/net7.0/datadog",
+                "CORECLR_PROFILER_PATH": "${workspaceFolder}/src/Web/bin/Debug/net7.0/datadog/osx/Datadog.Trace.ClrProfiler.Native.dylib"
             },
             "sourceFileMap": {
                 "/Views": "${workspaceFolder}/Views"
+            }
+        },
+        {
+            "name": "PublicApi",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            // If you have changed target frameworks, make sure to update the program path.
+            "program": "${workspaceFolder}/src/PublicApi/bin/Debug/net7.0/PublicApi.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/src/PublicApi",
+            "stopAtEntry": false,
+            "env": {
+                "ASPNETCORE_ENVIRONMENT": "Development",
+                "CORECLR_ENABLE_PROFILING": "1",
+                "CORECLR_PROFILER": "{846F5F1C-F9AE-4B07-969E-05C26BC060D8}",
+                "DD_DOTNET_TRACER_HOME": "${workspaceFolder}/src/PublicApi/bin/Debug/net7.0/datadog",
+                "CORECLR_PROFILER_PATH": "${workspaceFolder}/src/PublicApi/bin/Debug/net7.0/datadog/osx/Datadog.Trace.ClrProfiler.Native.dylib"
             }
         },
         {
