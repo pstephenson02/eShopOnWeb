@@ -24,7 +24,11 @@
                 "CORECLR_ENABLE_PROFILING": "1",
                 "CORECLR_PROFILER": "{846F5F1C-F9AE-4B07-969E-05C26BC060D8}",
                 "DD_DOTNET_TRACER_HOME": "${workspaceFolder}/src/Web/bin/Debug/net7.0/datadog",
-                "CORECLR_PROFILER_PATH": "${workspaceFolder}/src/Web/bin/Debug/net7.0/datadog/osx/Datadog.Trace.ClrProfiler.Native.dylib"
+                "CORECLR_PROFILER_PATH": "${workspaceFolder}/src/Web/bin/Debug/net7.0/datadog/osx/Datadog.Trace.ClrProfiler.Native.dylib",
+                "DD_LOGS_INJECTION": "true",
+                "DD_RUNTIME_METRICS_ENABLED": "true",
+                "DD_LOGS_DIRECT_SUBMISSION_INTEGRATIONS": "ILogger",
+                "DD_API_KEY": "${env:DD_API_KEY}"
             },
             "sourceFileMap": {
                 "/Views": "${workspaceFolder}/Views"
@@ -45,7 +49,11 @@
                 "CORECLR_ENABLE_PROFILING": "1",
                 "CORECLR_PROFILER": "{846F5F1C-F9AE-4B07-969E-05C26BC060D8}",
                 "DD_DOTNET_TRACER_HOME": "${workspaceFolder}/src/PublicApi/bin/Debug/net7.0/datadog",
-                "CORECLR_PROFILER_PATH": "${workspaceFolder}/src/PublicApi/bin/Debug/net7.0/datadog/osx/Datadog.Trace.ClrProfiler.Native.dylib"
+                "CORECLR_PROFILER_PATH": "${workspaceFolder}/src/PublicApi/bin/Debug/net7.0/datadog/osx/Datadog.Trace.ClrProfiler.Native.dylib",
+                "DD_LOGS_INJECTION": "true",
+                "DD_RUNTIME_METRICS_ENABLED": "true",
+                "DD_LOGS_DIRECT_SUBMISSION_INTEGRATIONS": "ILogger",
+                "DD_API_KEY": "${env:DD_API_KEY}"
             }
         },
         {
