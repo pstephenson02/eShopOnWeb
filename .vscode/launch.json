@@ -54,5 +54,12 @@
             "request": "attach",
             "processId": "${command:pickProcess}"
         }
-    ]
+    ],
+    "compounds": [
+        {
+          "name": "Web/PublicApi",
+          "configurations": ["Web", "PublicApi"],
+          "stopAll": true
+        }
+      ]
 }
