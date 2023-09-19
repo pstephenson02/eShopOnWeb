@@ -1,4 +1,9 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.Extensions.Options
+@using Microsoft.eShopWeb.Web.Configuration
+@inject IOptions<DatadogOptions> DatadogOptions
+@using Datadog.Trace
+<!-- DATADOG;trace-id=@Tracer.Instance.ActiveScope.Span.TraceId;trace-time=@(DateTimeOffset.Now.ToUnixTimeMilliseconds()) -->
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -66,5 +71,31 @@
         <script src="~/js/site.min.js" asp-append-version="true"></script>
     </environment>
     @RenderSection("scripts", required: false)
+    <script>
+        (function(h,o,u,n,d) {
+            h=h[d]=h[d]||{q:[],onReady:function(c){h.q.push(c)}}
+            d=o.createElement(u);d.async=1;d.src=n
+            n=o.getElementsByTagName(u)[0];n.parentNode.insertBefore(d,n)
+        })(window,document,'script','https://www.datadoghq-browser-agent.com/us1/v4/datadog-rum.js','DD_RUM')
+        window.DD_RUM.onReady(function() {
+            window.DD_RUM.init({
+            clientToken: @DatadogOptions.Value.ClientToken,
+            applicationId: @DatadogOptions.Value.ApplicationId,
+            site: @DatadogOptions.Value.Site,
+            service: @DatadogOptions.Value.Service,
+            env: @Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT"),
+            // Specify a version number to identify the deployed version of your application in Datadog
+            // version: '1.0.0',
+            sessionSampleRate: 100,
+            sessionReplaySampleRate: 20,
+            trackUserInteractions: true,
+            trackResources: true,
+            trackLongTasks: true,
+            defaultPrivacyLevel: 'mask-user-input',
+            });
+
+            window.DD_RUM.startSessionReplayRecording();
+        })
+    </script>
 </body>
 </html>
