@@ -26,7 +26,7 @@ if (builder.Environment.IsDevelopment() || builder.Environment.EnvironmentName =
     // Configure SQL Server (local)
     Microsoft.eShopWeb.Infrastructure.Dependencies.ConfigureServices(builder.Configuration, builder.Services);
 }
-else{
+else {
     // Configure SQL Server (prod)
     var credential = new ChainedTokenCredential(new AzureDeveloperCliCredential(), new DefaultAzureCredential());
     builder.Configuration.AddAzureKeyVault(new Uri(builder.Configuration["AZURE_KEY_VAULT_ENDPOINT"] ?? ""), credential);
@@ -92,6 +92,8 @@ builder.Services.Configure<ServiceConfig>(config =>
     config.Services = new List<ServiceDescriptor>(builder.Services);
     config.Path = "/allservices";
 });
+
+builder.Services.Configure<DatadogOptions>(builder.Configuration.GetSection(DatadogOptions.Datadog));
 
 // blazor configuration
 var configSection = builder.Configuration.GetRequiredSection(BaseUrlConfiguration.CONFIG_NAME);
