@@ -22,8 +22,15 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using MinimalApi.Endpoint.Configurations.Extensions;
 using MinimalApi.Endpoint.Extensions;
+using Datadog.Trace;
+using Datadog.Trace.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// https://docs.datadoghq.com/tracing/trace_collection/library_config/dotnet-core?tab=code
+var tracerSettings = TracerSettings.FromDefaultSources();
+tracerSettings.Environment = builder.Environment.EnvironmentName;
+Tracer.Configure(tracerSettings);
 
 builder.Services.AddEndpoints();
 

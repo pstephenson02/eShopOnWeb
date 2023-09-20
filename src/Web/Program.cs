@@ -18,9 +18,16 @@ using Microsoft.eShopWeb.Web;
 using Microsoft.eShopWeb.Web.Configuration;
 using Microsoft.eShopWeb.Web.HealthChecks;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
+using Datadog.Trace;
+using Datadog.Trace.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Logging.AddConsole();
+
+// https://docs.datadoghq.com/tracing/trace_collection/library_config/dotnet-core?tab=code
+var tracerSettings = TracerSettings.FromDefaultSources();
+tracerSettings.Environment = builder.Environment.EnvironmentName;
+Tracer.Configure(tracerSettings);
 
 if (builder.Environment.IsDevelopment() || builder.Environment.EnvironmentName == "Docker"){
     // Configure SQL Server (local)
