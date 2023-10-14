@@ -5,11 +5,13 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building'
+                dotnetBuild
             }
         }
         stage('Test') {
             steps {
                 echo 'Testing'
+                dotnetTest
             }
         }
     }
