@@ -4,14 +4,12 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'Building'
-                dotnetBuild
+                sh 'dotnet'
             }
         }
         stage('Test') {
             steps {
                 echo 'Testing'
-                dotnetTest
             }
         }
     }
