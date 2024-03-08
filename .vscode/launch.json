@@ -29,7 +29,8 @@
                 "DD_RUNTIME_METRICS_ENABLED": "true",
                 "DD_LOGS_DIRECT_SUBMISSION_INTEGRATIONS": "ILogger",
                 "DD_API_KEY": "${env:DD_API_KEY}",
-                "DD_SERVICE": "eshoponweb-web"
+                "DD_SERVICE": "eshoponweb-web",
+                "DD_TRACE_AGENT_PORT": "8136"
             },
             "sourceFileMap": {
                 "/Views": "${workspaceFolder}/Views"
@@ -55,7 +56,8 @@
                 "DD_RUNTIME_METRICS_ENABLED": "true",
                 "DD_LOGS_DIRECT_SUBMISSION_INTEGRATIONS": "ILogger",
                 "DD_API_KEY": "${env:DD_API_KEY}",
-                "DD_SERVICE": "eshoponweb-publicapi"
+                "DD_SERVICE": "eshoponweb-publicapi",
+                "DD_TRACE_AGENT_PORT": "8136"
             }
         },
         {
