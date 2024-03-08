@@ -1,8 +1,6 @@
 ﻿@using Microsoft.Extensions.Options
 @using Microsoft.eShopWeb.Web.Configuration
 @inject IOptions<DatadogOptions> DatadogOptions
-@using Datadog.Trace
-<!-- DATADOG;trace-id=@Tracer.Instance.ActiveScope.Span.TraceId;trace-time=@(DateTimeOffset.Now.ToUnixTimeMilliseconds()) -->
 <!DOCTYPE html>
 <html>
 <head>
